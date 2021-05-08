@@ -12,8 +12,13 @@ class Deck
     create
   end
 
-  def give
-    cards.rand_pair!
+  def give1
+    card = cards.rand_pair!
+    { card[0] => card[1] }
+  end
+
+  def give2
+    give1.merge(give1)
   end
 
   private
