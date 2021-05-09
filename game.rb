@@ -3,11 +3,12 @@
 class Game
   attr_reader :bank, :deck, :dealer, :user
 
-  def initialize(bank)
+  def initialize(bank, dealer, user)
     @deck = Deck.new
-    @dealer = Dealer.new
-    @user = User.new
+    @dealer = dealer
+    @user = user
     @bank = bank
+    start
   end
 
   def start

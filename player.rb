@@ -25,6 +25,11 @@ class Player
     end
   end
 
+  def show
+    cards.each_key { |key| print "#{key}\t" }
+    puts "\n"
+  end
+
   protected
 
   attr_writer :points
