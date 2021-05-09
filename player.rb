@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class Player
-  attr_reader :bank, :points, :cards
+  attr_reader :points, :cards
 
   def initialize
-    @bank = 100
     @points = 0
     @cards = {}
   end
@@ -12,11 +11,6 @@ class Player
   def hit(card)
     cards.merge!(card)
     scoring
-  end
-
-  def bet(value = 10)
-    self.bank -= value
-    value
   end
 
   def scoring
@@ -33,5 +27,5 @@ class Player
 
   protected
 
-  attr_writer :bank, :points
+  attr_writer :points
 end
