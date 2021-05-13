@@ -1,33 +1,16 @@
 # frozen_string_literal: true
 
 class Player
-  attr_reader :points, :cards
+  attr_reader :points, :hand
 
   def initialize
     @points = 0
-    @cards = {}
+    @hand = Hand.new
   end
 
   def hit(card)
-    cards.merge!(card)
-    scoring
-  end
-
-  def scoring
-    self.points = 0
-    cards.each_value do |value|
-      value ||= if (points + 11) <= 21
-                  11
-                else
-                  1
-                end
-      self.points += value
-    end
-  end
-
-  def show
-    cards.each_key { |key| print "#{key}\t" }
-    puts "\n"
+    hand.cards.push(card)
+    self.points = hand.scoring
   end
 
   protected

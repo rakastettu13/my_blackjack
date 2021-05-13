@@ -2,6 +2,6 @@
 
 class Dealer < Player
   def go(deck)
-    hit(deck.give1) if points < 17
+    hit(deck.give) if points < 17
   end
 end

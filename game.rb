@@ -12,13 +12,15 @@ class Game
   end
 
   def start
-    user.hit(deck.give2)
-    dealer.hit(deck.give2)
+    2.times do
+      user.hit(deck.give)
+      dealer.hit(deck.give)
+    end
     bank.start
   end
 
   def play(action)
-    user.hit(deck.give1) if action == :hit
+    user.hit(deck.give) if action == :hit
     dealer.go(deck) unless user.points > 21
   end
 
