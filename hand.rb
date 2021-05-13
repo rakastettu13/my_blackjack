@@ -18,11 +18,6 @@ class Hand
     end
   end
 
-  def show
-    cards.each { |card| print "#{card.indicator}\t" }
-    puts "\n"
-  end
-
   def full?
     cards.size == 3
   end

@@ -8,7 +8,6 @@ class Interface
     @username = gets.chomp
     puts "\nHello, #{@username}!"
     @bank = Bank.new
-    Card.create_deck
     gameplay
   end
 
@@ -62,12 +61,18 @@ class Interface
   def show_cards(value)
     puts 'Dealer cards'
     if value == :face_up
-      dealer.hand.show
+      print_cards :dealer
     else
       puts "**\t**"
     end
     puts 'Your cards'
-    user.hand.show
+    print_cards :user
+    puts "\n"
+  end
+
+  def print_cards(player)
+    player = send player
+    player.hand.cards.each { |card| print "#{card.indicator}\t" }
     puts "\n"
   end
 
